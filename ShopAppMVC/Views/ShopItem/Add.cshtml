@@ -1,0 +1,26 @@
+﻿namespace ShopAppMVC.Views.ShopItem
+{
+    public class Add
+    {
+        @model ShopItem
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Add", "Item", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+
+    @Html.LabelFor(a => a.StoreName)
+    @Html.TextBoxFor(a => a.StoreName)
+
+    @Html.LabelFor(a => a.Price)
+    @Html.TextBoxFor(a => a.Price)
+
+    @Html.LabelFor(a => a.ExpiryDate)
+    @Html.TextBoxFor(a => a.ExpiryDate)
+        
+    <input type="submit" value="Submit"/>
+}
+    }
+}
