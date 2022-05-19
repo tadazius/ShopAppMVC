@@ -25,8 +25,8 @@
           <td>@item.Price</td>
           <td>@item.StoreName</td>
           <td>@item.ExpiryDate</td>
-          <td>@Html.ActionLink("Remove", "Delete", "Item", new { Name = @item.Name})</td>
-          <td>@Html.ActionLink("Edit", "Update", "Edit", new { Name = @item.Name})</td>
+          <td>@Html.ActionLink("Remove", "Delete", "ShopItem", new { Id = @item.Id})</td>
+          <td>@Html.ActionLink("Edit", "Update", "ShopItem", new { Id = @item.Id})</td>
         </tr>
         }
     

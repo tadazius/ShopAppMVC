@@ -6,7 +6,7 @@
 
 <h2>Register</h2>
 
-@using (Html.BeginForm("Add", "Item", FormMethod.Post))
+@using (Html.BeginForm("Add", "ShopItem", FormMethod.Post))
 {
     @Html.LabelFor(a => a.Name)
     @Html.TextBoxFor(a => a.Name)
@@ -21,6 +21,5 @@
     @Html.TextBoxFor(a => a.ExpiryDate)
         
     <input type="submit" value="Submit"/>
-}
-    }
+
 }

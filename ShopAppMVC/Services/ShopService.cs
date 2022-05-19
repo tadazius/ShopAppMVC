@@ -15,8 +15,6 @@ namespace ShopAppMVC.Services
         {
             _dataContext = dataContext;
         }
-        
-             
 
         public List<ShopItem> GetAll()
         {
@@ -35,9 +33,23 @@ namespace ShopAppMVC.Services
                 _dataContext.ShopItems.Remove(shopItem);
             }
             _dataContext.SaveChanges();
-            
+
         }
-        
-    
+        public void Update(int id)
+        {
+            var item = _dataContext.ShopItems.FirstOrDefault(x => x.Id == id);
+            if (item != null)
+            {
+                _dataContext.ShopItems.Remove(item);
+            }
+            item = _dataContext.ShopItems.FirstOrDefault(x => x.Id == id);
+
+        }
+
+        public void Get(int id)
+        {
+         
+            //return _dataContext.ShopItems.;
+        }
     }
 }

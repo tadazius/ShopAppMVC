@@ -17,7 +17,7 @@ namespace ShopAppMVC.Controllers
             return View(shop);
         }
         [HttpGet]
-        public IActionResult Add ()
+        public IActionResult Add()
         {
             ShopItem shopItem = new ShopItem();
             return View(shopItem);
@@ -31,6 +31,22 @@ namespace ShopAppMVC.Controllers
         public IActionResult Delete(string name)
         {
             _shopService.Delete(name);
+            return RedirectToAction("Index");
+        }
+
+        //[HttpGet]
+        //public IActionResult Update(int Id)
+        //{
+            
+        //    return RedirectToAction("Index");
+        //}
+
+        //[HttpPost]
+        public IActionResult Update(int Id)
+        {
+           
+            _shopService.Update(Id);
+           // _shopService.Add(item);
             return RedirectToAction("Index");
         }
     }
