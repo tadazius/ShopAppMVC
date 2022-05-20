@@ -1,0 +1,27 @@
+﻿@model List<User>
+
+<h3>Test user edit</h3>
+
+<table>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Last name</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var user in @Model)
+        {
+        <tr>
+          <th scope="row"></th>
+          <td>@user.FirstName</td>
+          <td>@user.LastName</td>
+          <td>@Html.ActionLink("Edit", "Update", "Edit", new { Name = @User.Identity})</td>
+        </tr>
+        }
+  </tbody>
+</table>

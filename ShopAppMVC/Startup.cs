@@ -32,7 +32,8 @@ namespace ShopAppMVC
             services.AddDbContext<DataContext>(c => c.UseSqlServer(defaultConnectionString));
 
             services.AddTransient<ShopService>();
-           
+            services.AddTransient<UserService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopAppMVC.Dtos;
 using ShopAppMVC.Models;
 using ShopAppMVC.Services;
 
@@ -19,13 +20,13 @@ namespace ShopAppMVC.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ShopItem shopItem = new ShopItem();
+            var shopItem = new CreateShopItemDto();
             return View(shopItem);
         }
         [HttpPost]
-        public IActionResult Add(ShopItem shop)
+        public IActionResult Add(CreateShopItemDto createShop)
         {
-            _shopService.Add(shop);
+            _shopService.Add(createShop.ShopItem);
             return RedirectToAction("Index");
         }
         public IActionResult Delete(string name)

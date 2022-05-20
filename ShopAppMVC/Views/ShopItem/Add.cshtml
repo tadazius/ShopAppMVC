@@ -1,24 +1,24 @@
-﻿namespace ShopAppMVC.Views.ShopItem
-{
-    public class Add
-    {
-        @model ShopItem
+﻿@using ShopAppMVC.Dtos
+        @model CreateShopItemDto
 
 <h2>Register</h2>
 
 @using (Html.BeginForm("Add", "ShopItem", FormMethod.Post))
 {
-    @Html.LabelFor(a => a.Name)
-    @Html.TextBoxFor(a => a.Name)
+    @Html.LabelFor(a => a.ShopItem.Name)
+    @Html.TextBoxFor(a => a.ShopItem.Name)
 
-    @Html.LabelFor(a => a.StoreName)
-    @Html.TextBoxFor(a => a.StoreName)
+    @Html.LabelFor(a => a.ShopItem.StoreName)
+    @Html.TextBoxFor(a => a.ShopItem.StoreName)
 
-    @Html.LabelFor(a => a.Price)
-    @Html.TextBoxFor(a => a.Price)
+    @Html.LabelFor(a => a.ShopItem.Price)
+    @Html.TextBoxFor(a => a.ShopItem.Price)
 
-    @Html.LabelFor(a => a.ExpiryDate)
-    @Html.TextBoxFor(a => a.ExpiryDate)
+    @Html.LabelFor(a => a.ShopItem.ExpiryDate)
+    @Html.TextBoxFor(a => a.ShopItem.ExpiryDate)
+
+    @Html.LabelFor(a => a.ShopItem.UserId)
+    @Html.TextBoxFor(a => a.ShopItem.UserId)
         
     <input type="submit" value="Submit"/>
 
