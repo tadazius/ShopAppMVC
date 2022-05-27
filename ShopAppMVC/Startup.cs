@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopAppMVC.Data;
+using ShopAppMVC.Repositories;
 using ShopAppMVC.Services;
 using System;
 using System.Collections.Generic;
@@ -31,8 +32,9 @@ namespace ShopAppMVC
 
             services.AddDbContext<DataContext>(c => c.UseSqlServer(defaultConnectionString));
 
-            services.AddTransient<ShopService>();
+            services.AddTransient<ShopItemService>();
             services.AddTransient<UserService>();
+            services.AddTransient<ShopItemRepository>();
 
         }
 

@@ -2,53 +2,62 @@
 using ShopAppMVC.Dtos;
 using ShopAppMVC.Models;
 using ShopAppMVC.Services;
+using System.Collections.Generic;
 
 namespace ShopAppMVC.Controllers
 {
     public class ShopItemController : Controller
     {
-        private ShopService _shopService;
-        public ShopItemController(ShopService shopService)
+        private ShopItemService _shopItemService;
+        private UserService _userService;
+        public ShopItemController(ShopItemService shopService, UserService userService)
         {
-            _shopService = shopService;
+            _shopItemService = shopService;
+            _userService = userService;
         }
         public IActionResult Index()
         {
-            var shop = _shopService.GetAll();
-            return View(shop);
+            var shops = _shopItemService.GetAll();
+            return View(shops);
         }
         [HttpGet]
         public IActionResult Add()
         {
-            var shopItem = new CreateShopItemDto();
+            ShopItemDto shopItem = new ShopItemDto();
+            shopItem.Users = _userService.GetAll();
             return View(shopItem);
         }
         [HttpPost]
-        public IActionResult Add(CreateShopItemDto createShop)
+        public IActionResult Add(ShopItemDto createShopItemDto)
         {
-            _shopService.Add(createShop.ShopItem);
-            return RedirectToAction("Index");
-        }
-        public IActionResult Delete(string name)
-        {
-            _shopService.Delete(name);
-            return RedirectToAction("Index");
-        }
-
-        //[HttpGet]
-        //public IActionResult Update(int Id)
-        //{
             
-        //    return RedirectToAction("Index");
-        //}
+            _shopItemService.Add(createShopItemDto);
 
-        //[HttpPost]
-        public IActionResult Update(int Id)
-        {
-           
-            _shopService.Update(Id);
-           // _shopService.Add(item);
             return RedirectToAction("Index");
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            _shopItemService.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        /*[HttpGet]*/
+        public IActionResult Update(int id)
+            {
+                var item = _shopItemService.Get(id);
+                return View(item);
+            }
+        [HttpPost]
+        public IActionResult Update(ShopItem shopItem)
+        {
+
+            _shopItemService.Update(shopItem);
+            return RedirectToAction("Index");
+        }
+        public void Get(int id)
+        {
+            var shopItem = _shopItemService.FirstOrDefault()
         }
     }
 }

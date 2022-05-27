@@ -1,4 +1,5 @@
-﻿using ShopAppMVC.Models;
+﻿using ShopAppMVC.Data;
+using ShopAppMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ShopAppMVC.Dtos
 {
-    public class CreateShopItemDto
+    public class ShopItemDto
     {
         public ShopItem ShopItem { get; set; }
-        public List<User> Users { get; set; }
+        public List<UserDto> Users { get; set; }
     }
 }

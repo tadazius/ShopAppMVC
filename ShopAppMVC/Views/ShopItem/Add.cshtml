@@ -1,25 +1,34 @@
 ﻿@using ShopAppMVC.Dtos
-        @model CreateShopItemDto
+@model ShopItemDto
 
 <h2>Register</h2>
 
 @using (Html.BeginForm("Add", "ShopItem", FormMethod.Post))
 {
+    <div class="form-group">
     @Html.LabelFor(a => a.ShopItem.Name)
     @Html.TextBoxFor(a => a.ShopItem.Name)
+</div>
 
+<div class="form-group">
     @Html.LabelFor(a => a.ShopItem.StoreName)
     @Html.TextBoxFor(a => a.ShopItem.StoreName)
+</div>
 
+<div class="form-group"> 
     @Html.LabelFor(a => a.ShopItem.Price)
     @Html.TextBoxFor(a => a.ShopItem.Price)
+</div>
 
-    @Html.LabelFor(a => a.ShopItem.ExpiryDate)
-    @Html.TextBoxFor(a => a.ShopItem.ExpiryDate)
-
+<div class="form-group">
+    @Html.LabelFor(a => a.ShopItem.ExpireDate)
+    @Html.TextBoxFor(a => a.ShopItem.ExpireDate)
+</div>
+<div class="form-group">
     @Html.LabelFor(a => a.ShopItem.UserId)
-    @Html.TextBoxFor(a => a.ShopItem.UserId)
-        
-    <input type="submit" value="Submit"/>
+    @Html.DropDownListFor(a => a.ShopItem.UserId, new SelectList(@Model.Users, "Id", "FullName"), "", new {@class = "form-group"})
+   </div>
+
+    <input class ="btn btn-primary" type="submit" value="Submit"/>
 
 }

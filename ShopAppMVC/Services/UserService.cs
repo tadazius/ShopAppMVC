@@ -16,9 +16,16 @@ namespace ShopAppMVC.Services
         {
             _dataContext = dataContext;
         }
-        public List<User> GetAll()
+        public List<UserDto> GetAll()
         {
-            return _dataContext.Users.ToList();
+            var entities = _dataContext.Users.ToList();
+            var dtos = entities.Select(x => new UserDto
+            {
+                Id = x.Id,
+                FullName = $"{x.FirstName} {x.LastName}"
+            }).ToList();
+
+            return dtos;
         }
         public void Add(User user)
         {

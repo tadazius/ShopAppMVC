@@ -1,35 +1,36 @@
-﻿@model List<ShopItem>
+﻿@using ShopAppMVC.Dtos
+@model ShopItemDto
 
-<h3>Test shop edit</h3>
+<h3>Edit</h3>
 
-<table>
+@using(Html.BeginForm("Edit", "ShopItem", FormMethod.Post ))
+ {
+
+ <div class="form-group">
+    @Html.LabelFor(a => a.ShopItem.Name)
+    @Html.TextBoxFor(a => a.ShopItem.Name)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(a => a.ShopItem.StoreName)
+    @Html.TextBoxFor(a => a.ShopItem.StoreName)
+</div>
+
+<div class="form-group"> 
+    @Html.LabelFor(a => a.ShopItem.Price)
+    @Html.TextBoxFor(a => a.ShopItem.Price)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(a => a.ShopItem.ExpireDate)
+    @Html.TextBoxFor(a => a.ShopItem.ExpireDate)
+</div>
+<div class="form-group">
+    @Html.LabelFor(a => a.ShopItem.UserId)
+    @Html.DropDownListFor(a => a.ShopItem.UserId, new SelectList(@Model.Users, "Id", "FullName"), "", new {@class = "form-group"})
+   </div>
+
+    <input class ="btn btn-primary" type="submit" value="Submit"/>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Store name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Expiry Date</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-      @foreach (var item in @Model)
-        {
-        <tr>
-          <th scope="row"></th>
-          <td>@item.Name</td>
-          <td>@item.Price</td>
-          <td>@item.StoreName</td>
-          <td>@item.ExpiryDate</td>
-          <td>@Html.ActionLink("Remove", "Delete", "Item", new { Name = @item.Name})</td>
-          <td>@Html.ActionLink("Edit", "Update", "Edit", new { Name = @item.Name})</td>
-        </tr>
-        }
-    
-    
-  </tbody>
-</table>
+ }

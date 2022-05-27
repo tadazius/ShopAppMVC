@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ShopAppMVC.Models
 {
-    public class User : NamedEntity
+    public class StoreName : NamedEntity
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public List<ShopItem> ShopItems { get; set; }
+
     }
 }
